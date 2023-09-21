@@ -6,10 +6,9 @@
 	let title = '';
 
 	function addRss() {
-		if (url && url.length > 0 && title && title.length > 0) {
-			$rssFeeds.push({ url: url, title: title });
-            $rssFeeds = $rssFeeds;
-		}
+		if (url && url.length > 0 && title && title.length > 0)
+			if (!$rssFeeds.find((feed) => feed.url === url))
+				$rssFeeds = [...$rssFeeds, { url: url, title: title }];
 	}
 </script>
 
