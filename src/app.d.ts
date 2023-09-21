@@ -7,6 +7,11 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+
+	interface Feed {
+		title: string;
+		url: string;
+	}
 }
 
 export {};

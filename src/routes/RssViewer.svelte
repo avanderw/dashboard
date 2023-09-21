@@ -1,11 +1,26 @@
 <script lang="ts">
-    export let rss:string;
-    export let title:string;
+	import { rssFeeds } from '$lib/stores';
+	import { XCircleIcon } from 'svelte-feather-icons';
+
+	export let rss: string;
+	export let title: string;
+
+    function removeRss() {
+        $rssFeeds = $rssFeeds.filter((feed) => feed.url !== rss);
+    }
 </script>
-<iframe src="https://avanderw.co.za/rss-viewer/?rss={encodeURI(rss)}" title="{title}" frameborder=0></iframe>
+
+<button on:click={removeRss}><XCircleIcon size="18" /></button>
+<iframe src="https://avanderw.co.za/rss-viewer/?rss={encodeURI(rss)}" {title} frameborder="0" />
+
 <style>
-    iframe {
-        width: 100%;
-        height: 100%;
+	iframe {
+		width: 100%;
+		height: 100%;
+	}
+    button {
+        border: none;
+        background: none;
+        cursor: pointer;
     }
 </style>
