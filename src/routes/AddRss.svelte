@@ -7,8 +7,11 @@
 
 	function addRss() {
 		if (url && url.length > 0 && title && title.length > 0)
-			if (!$rssFeeds.find((feed) => feed.url === url))
+			if (!$rssFeeds.find((feed) => feed.url === url)) {
 				$rssFeeds = [...$rssFeeds, { url: url, title: title }];
+                url = '';
+                title = '';
+            }
 	}
 </script>
 

@@ -4,27 +4,16 @@
 	import RssViewer from './RssViewer.svelte';
 
 	import { rssFeeds } from '$lib/stores';
-	import { XCircleIcon } from 'svelte-feather-icons';
 </script>
 
 <AddRss />
 <div class="dashboard">
+	<Bookmarks />
 	{#each $rssFeeds as rssFeed}
-		<h1>{rssFeed.title} {rssFeed.url}</h1>
 		<RssViewer rss={rssFeed.url} title={rssFeed.title} />
 	{/each}
-	<div style="width:50%"><Bookmarks /></div>
-	<div style="width:50%; height: 100vh;">
-		<div style="height: 50%">
-			<RssViewer rss="https://news.ycombinator.com/rss" title="Hacker News" />
-		</div>
-		<div style="height: 50%">
-			<RssViewer
-				rss="https://puzzling.stackexchange.com/feeds/hot"
-				title="Puzzling Stack Exchange"
-			/>
-		</div>
-	</div>
+	<RssViewer rss="https://news.ycombinator.com/rss" title="Hacker News" />
+	<RssViewer rss="https://puzzling.stackexchange.com/feeds/hot" title="Puzzling Stack Exchange" />
 </div>
 
 <style>
