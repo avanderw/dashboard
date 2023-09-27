@@ -6,14 +6,13 @@
 	import { rssFeeds } from '$lib/stores';
 </script>
 
-<AddRss />
+<div class="toolbar"><AddRss /></div>
 <div class="dashboard">
 	<Bookmarks />
 	{#each $rssFeeds as rssFeed}
-		<RssViewer rss={rssFeed.url} title={rssFeed.title} />
+		<RssViewer rss={rssFeed.url} />
 	{/each}
-	<RssViewer rss="https://news.ycombinator.com/rss" title="Hacker News" />
-	<RssViewer rss="https://puzzling.stackexchange.com/feeds/hot" title="Puzzling Stack Exchange" />
+	<RssViewer rss="https://puzzling.stackexchange.com/feeds/hot" />
 </div>
 
 <style>
@@ -22,14 +21,12 @@
 		padding: 0;
 		height: 100vh;
 	}
-	.dashboard {
+	.toolbar, .dashboard {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: space-evenly;
-		align-items: stretch;
-		align-content: stretch;
-		width: 100%;
-		height: 100%;
+	}
+	.toolbar {
+		padding: 0.5rem;
 	}
 </style>

@@ -2,6 +2,6 @@
 <style>
     iframe {
         width: 375px;
-        height: 100%;
+		height: 667px;
     }
 </style>

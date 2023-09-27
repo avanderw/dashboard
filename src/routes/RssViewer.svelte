@@ -1,42 +1,52 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
+	import { base } from '$app/paths';
 	import { rssFeeds } from '$lib/stores';
-	import { XCircleIcon } from 'svelte-feather-icons';
 
 	export let rss: string;
-	export let title: string;
+	
+	let src = "https://avanderw.co.za/rss-viewer/?rss=" + encodeURI(rss);
 
 	function removeRss() {
 		$rssFeeds = $rssFeeds.filter((feed) => feed.url !== rss);
 	}
 
-	if (browser) {
-		window.addEventListener('message', (event) => {
-			let message = event.data;
-			console.log(message.data);
-		}, false);
+	function refreshRss() {
+		const random = Math.random().toString(36).substring(7);
+		src = "https://avanderw.co.za/rss-viewer/?rss=" + encodeURI(rss) + "&refresh=" + random;
 	}
 </script>
 
 <div>
-	<button on:click={removeRss}><XCircleIcon size="18" /></button>
-	<iframe
-		src="https://avanderw.co.za/rss-viewer/?rss={encodeURI(rss)}"
-		{title}
-		frameborder="0"
-		width="100%"
-		height="100%"
-	/>
+	<button><svg><use href="{base}/feather-sprite.svg#arrow-up-circle" /></svg></button>
+	<button><svg><use href="{base}/feather-sprite.svg#arrow-down-circle" /></svg></button>
+	<button on:click={refreshRss}><svg><use href="{base}/feather-sprite.svg#refresh-cw" /></svg></button>
+	<button on:click={removeRss} style="float:right"><svg><use href="{base}/feather-sprite.svg#x-circle" /></svg></button>
+	<iframe {src} title="RSS Viewer" />
 </div>
 
 <style>
-    div {
-        width: 375px;
-        height: 667px;
-    }
+	div {
+		width: 375px;
+		height: 667px;
+		margin: 1rem 0.5rem;
+	}
+	iframe {
+		width: 100%;
+		height: 100%;
+		border: none;
+	}
 	button {
 		border: none;
 		background: none;
 		cursor: pointer;
+	}
+	svg {
+		width: 18px;
+		height: 18px;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		fill: none;
 	}
 </style>
