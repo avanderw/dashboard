@@ -1,4 +1,5 @@
 <script>
+	import { base } from '$app/paths';
 	import { rssFeeds } from '$lib/stores';
 	import { PlusCircleIcon } from 'svelte-feather-icons';
 
@@ -15,7 +16,7 @@
 
 <form on:submit={addRss}>
 	<input type="text" placeholder="Add RSS URL" bind:value={url} />
-	<button type="submit" title="Add RSS"><PlusCircleIcon size="18" /></button>
+	<button type="submit" title="Add RSS"><svg><use href="{base}/feather-sprite.svg#plus-circle" /></svg></button>
 </form>
 
 <style>
@@ -26,5 +27,8 @@
 		border: none;
 		background: none;
 		cursor: pointer;
+	}
+	svg {
+		color: var(--primary-color-light);
 	}
 </style>

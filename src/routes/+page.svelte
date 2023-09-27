@@ -12,7 +12,6 @@
 	{#each $rssFeeds as rssFeed}
 		<RssViewer rss={rssFeed.url} />
 	{/each}
-	<RssViewer rss="https://puzzling.stackexchange.com/feeds/hot" />
 </div>
 
 <style>
@@ -28,5 +27,7 @@
 	}
 	.toolbar {
 		padding: 0.5rem;
+		background-color: var(--primary-color-dark);
+		color: var(--primary-color-light);
 	}
 </style>

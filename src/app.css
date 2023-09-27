@@ -17,3 +17,24 @@
 *::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
+:root {
+	--white-color: #faf9f6;
+    --black-color: #1a1a1b;
+    --black-color-light: #818384;
+    --primary-color: #427AA1;
+    --primary-color-light: #ebf2fa;
+    --primary-color-dark: #212a3b;
+    --secondary-color: #679436;
+    --secondary-color-dark: #48622d;
+    --secondary-color-light: #f0f2a6;
+    --accent-color: #FFB100;
+}
+svg {
+	width: 18px;
+	height: 18px;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+}
